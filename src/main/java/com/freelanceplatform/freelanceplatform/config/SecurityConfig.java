@@ -17,6 +17,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
+
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/v2/api-docs", "/swagger-resources/**", "/swagger-ui/**", "/webjars/**", "/h2-console/**", "/api/auth/**", "/api/users/**").permitAll()  // Sta deze paden toe zonder authenticatie
                         .anyRequest().permitAll()
