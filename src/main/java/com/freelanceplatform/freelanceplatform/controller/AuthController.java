@@ -1,4 +1,4 @@
-package com.example.auth;
+package com.freelanceplatform.freelanceplatform.controller;
 
 import com.freelanceplatform.freelanceplatform.Logic.UserLogic;
 import com.freelanceplatform.freelanceplatform.model.Users;
