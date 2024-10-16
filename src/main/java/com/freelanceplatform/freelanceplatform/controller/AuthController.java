@@ -11,20 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 
     @Autowired
     private UserLogic userLogic;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Users users) {
-        boolean isAuthenticated = userLogic.authenticate(users.getUsername(), users.getPasswordHash());
-
+    public ResponseEntity<String> login(@RequestBody Users user) {
+        boolean isAuthenticated = userLogic.authenticate(user.getEmail(), user.getPassword());
         if (isAuthenticated) {
             return ResponseEntity.ok("Login successful");
         } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
         }
     }
 }

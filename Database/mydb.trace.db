@@ -1624,3 +1624,82 @@ Caused by: org.h2.mvstore.MVStoreException: The write format 2 is smaller than t
 	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2036)
 	at org.h2.mvstore.db.Store.<init>(Store.java:133)
 	... 24 more
+2024-10-07 16:30:46 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE USERS\000d\000aADD COLUMN first_name VARCHAR(255)[*],\000d\000aADD COLUMN last_name VARCHAR(255),\000d\000aADD COLUMN address VARCHAR(255),\000d\000aADD COLUMN city VARCHAR(255),\000d\000aADD COLUMN postal_code VARCHAR(20),\000d\000aADD COLUMN country VARCHAR(100),\000d\000aADD COLUMN phone_number VARCHAR(20)"; SQL statement:
+ALTER TABLE USERS
+ADD COLUMN first_name VARCHAR(255),
+ADD COLUMN last_name VARCHAR(255),
+ADD COLUMN address VARCHAR(255),
+ADD COLUMN city VARCHAR(255),
+ADD COLUMN postal_code VARCHAR(20),
+ADD COLUMN country VARCHAR(100),
+ADD COLUMN phone_number VARCHAR(20) [42000-214]
+2024-10-07 16:33:45 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE USERS\000d\000aADD COLUMN first_name VARCHAR(255)[*],\000d\000aADD COLUMN last_name VARCHAR(255),\000d\000aADD COLUMN address VARCHAR(255),\000d\000aADD COLUMN city VARCHAR(255),\000d\000aADD COLUMN postal_code VARCHAR(20),\000d\000aADD COLUMN country VARCHAR(100),\000d\000aADD COLUMN phone_number VARCHAR(20)"; SQL statement:
+ALTER TABLE USERS
+ADD COLUMN first_name VARCHAR(255),
+ADD COLUMN last_name VARCHAR(255),
+ADD COLUMN address VARCHAR(255),
+ADD COLUMN city VARCHAR(255),
+ADD COLUMN postal_code VARCHAR(20),
+ADD COLUMN country VARCHAR(100),
+ADD COLUMN phone_number VARCHAR(20) [42000-214]
+2024-10-07 16:33:48 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE USERS\000d\000aADD COLUMN first_name VARCHAR(255)[*],\000d\000aADD COLUMN last_name VARCHAR(255),\000d\000aADD COLUMN address VARCHAR(255),\000d\000aADD COLUMN city VARCHAR(255),\000d\000aADD COLUMN postal_code VARCHAR(20),\000d\000aADD COLUMN country VARCHAR(100),\000d\000aADD COLUMN phone_number VARCHAR(20)"; SQL statement:
+ALTER TABLE USERS
+ADD COLUMN first_name VARCHAR(255),
+ADD COLUMN last_name VARCHAR(255),
+ADD COLUMN address VARCHAR(255),
+ADD COLUMN city VARCHAR(255),
+ADD COLUMN postal_code VARCHAR(20),
+ADD COLUMN country VARCHAR(100),
+ADD COLUMN phone_number VARCHAR(20) [42000-214]
+2024-10-07 16:34:02 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE USERS\000d\000aADD COLUMN first_name VARCHAR(255)[*],\000d\000aADD COLUMN last_name VARCHAR(255),\000d\000aADD COLUMN address VARCHAR(255),\000d\000aADD COLUMN city VARCHAR(255),\000d\000aADD COLUMN postal_code VARCHAR(20),\000d\000aADD COLUMN country VARCHAR(100),\000d\000aADD COLUMN phone_number VARCHAR(20)"; SQL statement:
+ALTER TABLE USERS
+ADD COLUMN first_name VARCHAR(255),
+ADD COLUMN last_name VARCHAR(255),
+ADD COLUMN address VARCHAR(255),
+ADD COLUMN city VARCHAR(255),
+ADD COLUMN postal_code VARCHAR(20),
+ADD COLUMN country VARCHAR(100),
+ADD COLUMN phone_number VARCHAR(20) [42000-214]
+2024-10-07 16:34:07 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]ADD COLUMN last_name VARCHAR(255),\000d\000aADD COLUMN address VARCHAR(255),\000d\000aADD COLUMN city VARCHAR(255),\000d\000aADD COLUMN postal_code VARCHAR(20),\000d\000aADD COLUMN country VARCHAR(100),\000d\000aADD COLUMN phone_number VARCHAR(20)"; expected "ALTER, ANALYZE"; SQL statement:
+ADD COLUMN last_name VARCHAR(255),
+ADD COLUMN address VARCHAR(255),
+ADD COLUMN city VARCHAR(255),
+ADD COLUMN postal_code VARCHAR(20),
+ADD COLUMN country VARCHAR(100),
+ADD COLUMN phone_number VARCHAR(20) [42001-214]
+2024-10-07 16:34:21 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]ADD COLUMN address VARCHAR(255),\000d\000aADD COLUMN city VARCHAR(255),\000d\000aADD COLUMN postal_code VARCHAR(20),\000d\000aADD COLUMN country VARCHAR(100),\000d\000aADD COLUMN phone_number VARCHAR(20)"; expected "ALTER, ANALYZE"; SQL statement:
+ADD COLUMN address VARCHAR(255),
+ADD COLUMN city VARCHAR(255),
+ADD COLUMN postal_code VARCHAR(20),
+ADD COLUMN country VARCHAR(100),
+ADD COLUMN phone_number VARCHAR(20) [42001-214]
+2024-10-07 16:34:33 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]ADD COLUMN city VARCHAR(255),\000d\000aADD COLUMN postal_code VARCHAR(20),\000d\000aADD COLUMN country VARCHAR(100),\000d\000aADD COLUMN phone_number VARCHAR(20)"; expected "ALTER, ANALYZE"; SQL statement:
+ADD COLUMN city VARCHAR(255),
+ADD COLUMN postal_code VARCHAR(20),
+ADD COLUMN country VARCHAR(100),
+ADD COLUMN phone_number VARCHAR(20) [42001-214]
+2024-10-07 16:34:43 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]ADD COLUMN postal_code VARCHAR(20),\000d\000aADD COLUMN country VARCHAR(100),\000d\000aADD COLUMN phone_number VARCHAR(20)"; expected "ALTER, ANALYZE"; SQL statement:
+ADD COLUMN postal_code VARCHAR(20),
+ADD COLUMN country VARCHAR(100),
+ADD COLUMN phone_number VARCHAR(20) [42001-214]
+2024-10-07 16:34:49 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE USERS\000d\000aADD COLUMN city VARCHAR(255)\000d\000a[*]ADD COLUMN postal_code VARCHAR(20),\000d\000aADD COLUMN country VARCHAR(100),\000d\000aADD COLUMN phone_number VARCHAR(20)"; SQL statement:
+ALTER TABLE USERS
+ADD COLUMN city VARCHAR(255)
+ADD COLUMN postal_code VARCHAR(20),
+ADD COLUMN country VARCHAR(100),
+ADD COLUMN phone_number VARCHAR(20) [42000-214]
+2024-10-07 16:34:57 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE USERS\000d\000aADD COLUMN postal_code VARCHAR(20)[*],\000d\000aADD COLUMN country VARCHAR(100),\000d\000aADD COLUMN phone_number VARCHAR(20)"; SQL statement:
+ALTER TABLE USERS
+ADD COLUMN postal_code VARCHAR(20),
+ADD COLUMN country VARCHAR(100),
+ADD COLUMN phone_number VARCHAR(20) [42000-214]

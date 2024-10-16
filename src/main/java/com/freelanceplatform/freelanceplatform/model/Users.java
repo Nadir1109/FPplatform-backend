@@ -1,34 +1,30 @@
 package com.freelanceplatform.freelanceplatform.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String username;
+    private String name;
     private String email;
-    @Transient
     private String password;
-    private String passwordHash;
 
-    // Constructor met parameters
-    public Users(Long id, String username, String email, String passwordHash) {
+
+    public Users(Long id, String name, String email) {
         this.id = id;
-        this.username = username;
+        this.name = name;
         this.email = email;
-        this.passwordHash = passwordHash;
-    }
-
-    // Lege constructor nodig voor JPA
-    public Users() {
-
     }
 }
