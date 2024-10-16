@@ -28,7 +28,7 @@ public class UserLogic {
             return passwordEncoder.matches(password, user.getPasswordHash());
         }
 
-        // Return false als de gebruiker niet is gevonden of als het wachtwoord niet klopt
+        // Return false als de gebruiker niet is gevonden of als het wachtwoord niet klopterfff
         return false;
     }
 }
