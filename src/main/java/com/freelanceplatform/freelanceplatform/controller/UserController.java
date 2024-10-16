@@ -19,13 +19,12 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    // Haal alle gebruikers op
+
     @GetMapping
     public List<Users> getAllUsers() {
         return userRepository.findAll();
     }
 
-    // Registreer een nieuwe gebruiker
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody Users user) {
         System.out.println("Gebruiker aan het registeren: " + user.getUsername());
@@ -37,7 +36,7 @@ public class UserController {
         return ResponseEntity.ok("Gebruiker succesvol geregistreerd!");
     }
 
-    // Werk een bestaande gebruiker bij
+
     @PutMapping("/{id}")
     public ResponseEntity<String> updateUser(@PathVariable Long id, @RequestBody Users updatedUser) {
         Optional<Users> userData = userRepository.findById(id);
@@ -52,8 +51,6 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Gebruiker niet gevonden");
         }
     }
-
-    // Verwijder een gebruiker
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable Long id) {
         if (userRepository.existsById(id)) {

@@ -13,7 +13,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable())  // CSRF uitschakelen om POST-aanvragen te kunnen verwerken
+                .csrf(csrf -> csrf.disable())
+                .headers(headers -> headers.frameOptions().sameOrigin())// CSRF uitschakelen om POST-aanvragen te kunnen verwerken
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/v2/api-docs", "/swagger-resources/**", "/swagger-ui/**", "/webjars/**").permitAll()
                         .requestMatchers("/api/**").permitAll()  // Sta POST en GET naar deze endpoints toe
