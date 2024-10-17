@@ -1,7 +1,11 @@
 package com.freelanceplatform.freelanceplatform.controller;
 
-import com.freelanceplatform.freelanceplatform.Logic.UserLogic;
-import com.freelanceplatform.freelanceplatform.model.Users;
+import com.freelanceplatform.freelanceplatform.model.dto.UserRegisterDTO;
+import com.freelanceplatform.freelanceplatform.model.dto.UserUpdateDTO;
+import com.freelanceplatform.freelanceplatform.model.jpa.Users;
+import com.freelanceplatform.freelanceplatform.service.UserService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,41 +18,41 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserLogic userLogic;
+    private UserService userService;
 
     @GetMapping("/{id}")
     public ResponseEntity<Users> getUserById(@PathVariable Long id) {
-        Users user = userLogic.getUserById(id);
-        if (user == null) {
+        Users users = userService.getUserById(id);
+        if (users == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(users);
     }
 
     @GetMapping
     public ResponseEntity<List<Users>> getAllUsers() {
-        List<Users> users = userLogic.getAllUsers();
+        List<Users> users = userService.getAllUsers();
         return ResponseEntity.ok(users);
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Users> registerUser(@RequestBody Users user) {
-        Users newUser = userLogic.createUser(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
+    public ResponseEntity<Users> registerUser(@RequestBody @NotNull @Valid UserRegisterDTO userRegisterDTO) {
+        Users newUsers = userService.createUser(userRegisterDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newUsers);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Users> updateUser(@PathVariable Long id, @RequestBody Users user) {
-        Users updatedUser = userLogic.updateUser(id, user);
-        if (updatedUser == null) {
+    public ResponseEntity<Users> updateUser(@RequestBody @NotNull @Valid UserUpdateDTO userUpdateDTO) {
+        Users updatedUsers = userService.updateUser(userUpdateDTO);
+        if (updatedUsers == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(updatedUser);
+        return ResponseEntity.ok(updatedUsers);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        boolean isDeleted = userLogic.deleteUser(id);
+        boolean isDeleted = userService.deleteUser(id);
         if (!isDeleted) {
             return ResponseEntity.notFound().build();
         }

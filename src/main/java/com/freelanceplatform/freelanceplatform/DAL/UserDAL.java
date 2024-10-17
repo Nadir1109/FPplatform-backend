@@ -1,6 +1,6 @@
 package com.freelanceplatform.freelanceplatform.DAL;
 
-import com.freelanceplatform.freelanceplatform.model.Users;
+import com.freelanceplatform.freelanceplatform.model.jpa.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

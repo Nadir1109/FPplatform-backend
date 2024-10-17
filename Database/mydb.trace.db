@@ -43,8 +43,8 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/Nadir/I
 	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
 	... 26 more
-2024-09-29 01:40:11 database: wrong user or password; user: "SA"
-org.h2.message.DbException: Wrong user name or password [28000-214]
+2024-09-29 01:40:11 database: wrong users or password; users: "SA"
+org.h2.message.DbException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.get(DbException.java:223)
 	at org.h2.message.DbException.get(DbException.java:199)
 	at org.h2.message.DbException.get(DbException.java:188)
@@ -142,12 +142,12 @@ org.h2.message.DbException: Wrong user name or password [28000-214]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-214]
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:510)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 97 more
-2024-09-29 01:40:13 database: wrong user or password; user: "SA"
-org.h2.message.DbException: Wrong user name or password [28000-214]
+2024-09-29 01:40:13 database: wrong users or password; users: "SA"
+org.h2.message.DbException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.get(DbException.java:223)
 	at org.h2.message.DbException.get(DbException.java:199)
 	at org.h2.message.DbException.get(DbException.java:188)
@@ -207,12 +207,12 @@ org.h2.message.DbException: Wrong user name or password [28000-214]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-214]
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:510)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 59 more
-2024-09-29 01:40:15 database: wrong user or password; user: "SA"
-org.h2.message.DbException: Wrong user name or password [28000-214]
+2024-09-29 01:40:15 database: wrong users or password; users: "SA"
+org.h2.message.DbException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.get(DbException.java:223)
 	at org.h2.message.DbException.get(DbException.java:199)
 	at org.h2.message.DbException.get(DbException.java:188)
@@ -276,12 +276,12 @@ org.h2.message.DbException: Wrong user name or password [28000-214]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-214]
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:510)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 63 more
-2024-09-29 01:42:27 database: wrong user or password; user: "SA"
-org.h2.message.DbException: Wrong user name or password [28000-214]
+2024-09-29 01:42:27 database: wrong users or password; users: "SA"
+org.h2.message.DbException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.get(DbException.java:223)
 	at org.h2.message.DbException.get(DbException.java:199)
 	at org.h2.message.DbException.get(DbException.java:188)
@@ -379,12 +379,12 @@ org.h2.message.DbException: Wrong user name or password [28000-214]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-214]
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:510)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 97 more
-2024-09-29 01:42:29 database: wrong user or password; user: "SA"
-org.h2.message.DbException: Wrong user name or password [28000-214]
+2024-09-29 01:42:29 database: wrong users or password; users: "SA"
+org.h2.message.DbException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.get(DbException.java:223)
 	at org.h2.message.DbException.get(DbException.java:199)
 	at org.h2.message.DbException.get(DbException.java:188)
@@ -444,12 +444,12 @@ org.h2.message.DbException: Wrong user name or password [28000-214]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-214]
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:510)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 59 more
-2024-09-29 01:42:32 database: wrong user or password; user: "SA"
-org.h2.message.DbException: Wrong user name or password [28000-214]
+2024-09-29 01:42:32 database: wrong users or password; users: "SA"
+org.h2.message.DbException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.get(DbException.java:223)
 	at org.h2.message.DbException.get(DbException.java:199)
 	at org.h2.message.DbException.get(DbException.java:188)
@@ -513,12 +513,12 @@ org.h2.message.DbException: Wrong user name or password [28000-214]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-214]
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:510)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 63 more
-2024-09-29 01:42:47 database: wrong user or password; user: "SA"
-org.h2.message.DbException: Wrong user name or password [28000-214]
+2024-09-29 01:42:47 database: wrong users or password; users: "SA"
+org.h2.message.DbException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.get(DbException.java:223)
 	at org.h2.message.DbException.get(DbException.java:199)
 	at org.h2.message.DbException.get(DbException.java:188)
@@ -616,12 +616,12 @@ org.h2.message.DbException: Wrong user name or password [28000-214]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-214]
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:510)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 97 more
-2024-09-29 01:42:49 database: wrong user or password; user: "SA"
-org.h2.message.DbException: Wrong user name or password [28000-214]
+2024-09-29 01:42:49 database: wrong users or password; users: "SA"
+org.h2.message.DbException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.get(DbException.java:223)
 	at org.h2.message.DbException.get(DbException.java:199)
 	at org.h2.message.DbException.get(DbException.java:188)
@@ -681,12 +681,12 @@ org.h2.message.DbException: Wrong user name or password [28000-214]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-214]
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:510)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 59 more
-2024-09-29 01:42:51 database: wrong user or password; user: "SA"
-org.h2.message.DbException: Wrong user name or password [28000-214]
+2024-09-29 01:42:51 database: wrong users or password; users: "SA"
+org.h2.message.DbException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.get(DbException.java:223)
 	at org.h2.message.DbException.get(DbException.java:199)
 	at org.h2.message.DbException.get(DbException.java:188)
@@ -750,12 +750,12 @@ org.h2.message.DbException: Wrong user name or password [28000-214]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-214]
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:510)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 63 more
-2024-09-29 01:51:11 database: wrong user or password; user: "SA"
-org.h2.message.DbException: Wrong user name or password [28000-214]
+2024-09-29 01:51:11 database: wrong users or password; users: "SA"
+org.h2.message.DbException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.get(DbException.java:223)
 	at org.h2.message.DbException.get(DbException.java:199)
 	at org.h2.message.DbException.get(DbException.java:188)
@@ -853,12 +853,12 @@ org.h2.message.DbException: Wrong user name or password [28000-214]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-214]
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:510)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 97 more
-2024-09-29 01:51:13 database: wrong user or password; user: "SA"
-org.h2.message.DbException: Wrong user name or password [28000-214]
+2024-09-29 01:51:13 database: wrong users or password; users: "SA"
+org.h2.message.DbException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.get(DbException.java:223)
 	at org.h2.message.DbException.get(DbException.java:199)
 	at org.h2.message.DbException.get(DbException.java:188)
@@ -918,12 +918,12 @@ org.h2.message.DbException: Wrong user name or password [28000-214]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-214]
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:510)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 59 more
-2024-09-29 01:51:22 database: wrong user or password; user: "SA"
-org.h2.message.DbException: Wrong user name or password [28000-214]
+2024-09-29 01:51:22 database: wrong users or password; users: "SA"
+org.h2.message.DbException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.get(DbException.java:223)
 	at org.h2.message.DbException.get(DbException.java:199)
 	at org.h2.message.DbException.get(DbException.java:188)
@@ -1021,12 +1021,12 @@ org.h2.message.DbException: Wrong user name or password [28000-214]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-214]
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:510)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 97 more
-2024-09-29 01:51:24 database: wrong user or password; user: "SA"
-org.h2.message.DbException: Wrong user name or password [28000-214]
+2024-09-29 01:51:24 database: wrong users or password; users: "SA"
+org.h2.message.DbException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.get(DbException.java:223)
 	at org.h2.message.DbException.get(DbException.java:199)
 	at org.h2.message.DbException.get(DbException.java:188)
@@ -1086,7 +1086,7 @@ org.h2.message.DbException: Wrong user name or password [28000-214]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-214]
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong users name or password [28000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:510)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 59 more
