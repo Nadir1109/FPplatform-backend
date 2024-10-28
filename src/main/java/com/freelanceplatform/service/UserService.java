@@ -1,12 +1,11 @@
-package com.freelanceplatform.freelanceplatform.service;
+package com.freelanceplatform.service;
 
-import com.freelanceplatform.freelanceplatform.DAL.UserDAL;
-import com.freelanceplatform.freelanceplatform.model.dto.UserLoginDTO;
-import com.freelanceplatform.freelanceplatform.model.dto.UserRegisterDTO;
-import com.freelanceplatform.freelanceplatform.model.dto.UserUpdateDTO;
-import com.freelanceplatform.freelanceplatform.model.jpa.Users;
+import com.freelanceplatform.DAL.UserDAL;
+import com.freelanceplatform.model.dto.UserLoginDTO;
+import com.freelanceplatform.model.dto.UserRegisterDTO;
+import com.freelanceplatform.model.dto.UserUpdateDTO;
+import com.freelanceplatform.model.jpa.Users;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

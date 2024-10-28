@@ -1,4 +1,4 @@
-package com.freelanceplatform.freelanceplatform.config;
+package com.freelanceplatform.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

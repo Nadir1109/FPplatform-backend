@@ -1,9 +1,9 @@
-package com.freelanceplatform.freelanceplatform.controller;
+package com.freelanceplatform.controller;
 
-import com.freelanceplatform.freelanceplatform.model.dto.UserRegisterDTO;
-import com.freelanceplatform.freelanceplatform.model.dto.UserUpdateDTO;
-import com.freelanceplatform.freelanceplatform.model.jpa.Users;
-import com.freelanceplatform.freelanceplatform.service.UserService;
+import com.freelanceplatform.model.dto.UserRegisterDTO;
+import com.freelanceplatform.model.dto.UserUpdateDTO;
+import com.freelanceplatform.model.jpa.Users;
+import com.freelanceplatform.service.UserService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;

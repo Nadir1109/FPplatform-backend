@@ -1,4 +1,4 @@
-package com.freelanceplatform.freelanceplatform.service;
+package com.freelanceplatform.service;
 
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;

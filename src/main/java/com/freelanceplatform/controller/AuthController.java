@@ -1,7 +1,7 @@
-package com.freelanceplatform.freelanceplatform.controller;
+package com.freelanceplatform.controller;
 
-import com.freelanceplatform.freelanceplatform.service.UserService;
-import com.freelanceplatform.freelanceplatform.model.dto.UserLoginDTO;
+import com.freelanceplatform.service.UserService;
+import com.freelanceplatform.model.dto.UserLoginDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

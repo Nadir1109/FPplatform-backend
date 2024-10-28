@@ -1,4 +1,4 @@
-package com.freelanceplatform.freelanceplatform.model.dto;
+package com.freelanceplatform.model.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;

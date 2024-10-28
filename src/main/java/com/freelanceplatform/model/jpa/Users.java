@@ -1,4 +1,4 @@
-package com.freelanceplatform.freelanceplatform.model.jpa;
+package com.freelanceplatform.model.jpa;
 
 import jakarta.persistence.*;
 import lombok.*;

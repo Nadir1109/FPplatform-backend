@@ -1,18 +1,16 @@
-package com.freelanceplatform.freelanceplatform.Logic;
+package com.freelanceplatform.Logic;
 
-import com.freelanceplatform.freelanceplatform.DAL.UserDAL;
-import com.freelanceplatform.freelanceplatform.model.dto.UserRegisterDTO;
-import com.freelanceplatform.freelanceplatform.model.jpa.Users;
-import com.freelanceplatform.freelanceplatform.service.PasswordService;
-import com.freelanceplatform.freelanceplatform.service.UserService;
+import com.freelanceplatform.DAL.UserDAL;
+import com.freelanceplatform.model.dto.UserRegisterDTO;
+import com.freelanceplatform.model.jpa.Users;
+import com.freelanceplatform.service.PasswordService;
+import com.freelanceplatform.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Arrays;
