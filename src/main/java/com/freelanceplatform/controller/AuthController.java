@@ -1,7 +1,8 @@
 package com.freelanceplatform.controller;
 
-import com.freelanceplatform.service.UserService;
-import com.freelanceplatform.model.dto.UserLoginDTO;
+import com.freelanceplatform.Service.Implementation.UserServiceImpl;
+import com.freelanceplatform.DTO.UserLoginDTO;
+import com.freelanceplatform.Service.Interface.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     @Autowired
-    private UserService userService;
+    private final IUserService userService;
+
+    public AuthController(IUserService userService) {
+        this.userService = userService;
+    }
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody UserLoginDTO user) {

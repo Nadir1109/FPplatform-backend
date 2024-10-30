@@ -1,9 +1,9 @@
 package com.freelanceplatform.controller;
 
-import com.freelanceplatform.model.dto.UserRegisterDTO;
-import com.freelanceplatform.model.dto.UserUpdateDTO;
-import com.freelanceplatform.model.jpa.Users;
-import com.freelanceplatform.service.UserService;
+import com.freelanceplatform.DTO.UserRegisterDTO;
+import com.freelanceplatform.DTO.UserUpdateDTO;
+import com.freelanceplatform.DAL.Entity.User;
+import com.freelanceplatform.Service.Interface.IUserService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +14,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/user")
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private final IUserService userService;
+
+    public UserController(IUserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Users> getUserById(@PathVariable Long id) {
-        Users users = userService.getUserById(id);
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        User users = userService.getUserById(id);
         if (users == null) {
             return ResponseEntity.notFound().build();
         }
@@ -30,20 +34,20 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Users>> getAllUsers() {
-        List<Users> users = userService.getAllUsers();
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = userService.getAllUsers();
         return ResponseEntity.ok(users);
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Users> registerUser(@RequestBody @NotNull @Valid UserRegisterDTO userRegisterDTO) {
-        Users newUsers = userService.createUser(userRegisterDTO);
+    public ResponseEntity<User> registerUser(@RequestBody @NotNull @Valid UserRegisterDTO userRegisterDTO) {
+        User newUsers = userService.createUser(userRegisterDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(newUsers);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Users> updateUser(@RequestBody @NotNull @Valid UserUpdateDTO userUpdateDTO) {
-        Users updatedUsers = userService.updateUser(userUpdateDTO);
+    public ResponseEntity<User> updateUser(@RequestBody @NotNull @Valid UserUpdateDTO userUpdateDTO) {
+        User updatedUsers = userService.updateUser(userUpdateDTO);
         if (updatedUsers == null) {
             return ResponseEntity.notFound().build();
         }

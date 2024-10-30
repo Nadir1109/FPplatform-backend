@@ -1,21 +1,25 @@
-package com.freelanceplatform.model.dto;
+package com.freelanceplatform.DTO;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class UserUpdateDTO {
+@AllArgsConstructor
+@Builder(toBuilder = true)
+public class UserRegisterDTO {
 
-    @NotNull
-    private Long id;
     @NotNull
     @NotEmpty
     private String name;
     @NotNull
     @NotEmpty
     private String email;
+    @NotNull
+    @NotEmpty
     private String password;
 }
