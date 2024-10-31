@@ -2,55 +2,49 @@ package com.freelanceplatform.Service.Implementation;
 
 import com.freelanceplatform.DTO.CreateJobDTO;
 import com.freelanceplatform.DTO.EditJobDTO;
-import com.freelanceplatform.Service.Interface.IJobService;
 import com.freelanceplatform.DAL.Entity.Job;
-import com.freelanceplatform.DAL.Repository.JobRepository;
+import com.freelanceplatform.DAL.Interface.IJobDAL;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-public class JobServiceImpl implements IJobService {
-    private final JobRepository jobRepository;
+public class JobServiceImpl {
+    private final IJobDAL jobDAL;
 
-    public JobServiceImpl(JobRepository jobRepository) {
-        this.jobRepository = jobRepository;
+    public JobServiceImpl(IJobDAL jobDAL) {
+        this.jobDAL = jobDAL;
     }
-    @Override
+
     public Job createJob(CreateJobDTO createJobDTO) {
         Job job = new Job();
         job.setTitle(createJobDTO.getTitle());
         job.setBudget(createJobDTO.getBudget());
         job.setDeadline(createJobDTO.getDeadline().atStartOfDay());
         job.setDescription(createJobDTO.getDescription());
-        return jobRepository.save(job);
+        return jobDAL.save(job);
     }
 
-    @Override
     public List<Job> getAllJobs() {
-        return jobRepository.findAll();
+        return jobDAL.findAll();
     }
-    @Override
+
     public Job getJobById(Long id) {
-        return jobRepository.findById(id).orElse(null);
+        return jobDAL.findById(id).orElse(null);
     }
-    @Override
+
     public Job updateJob(Long id, EditJobDTO editJobDTO) {
-        if (jobRepository.existsById(id)) {
-            Job job = jobRepository.findById(id).orElse(null);
-            if (job != null) {
-                job.setTitle(editJobDTO.getTitle());
-                job.setBudget(editJobDTO.getBudget());
-                job.setDeadline(editJobDTO.getDeadline().atStartOfDay()); // Pas conversie aan indien nodig
-                job.setDescription(editJobDTO.getDescription());
-                return jobRepository.save(job);
-            }
+        if (jobDAL.existsById(id)) {
+            Job job = jobDAL.findById(id).get();
+            job.setTitle(editJobDTO.getTitle());
+            job.setBudget(editJobDTO.getBudget());
+            job.setDeadline(editJobDTO.getDeadline().atStartOfDay());
+            job.setDescription(editJobDTO.getDescription());
+            return jobDAL.save(job);
         }
         return null;
     }
-    @Override
+
     public void deleteJob(Long id) {
-        jobRepository.deleteById(id);
+        jobDAL.deleteById(id);
     }
 }

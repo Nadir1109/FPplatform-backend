@@ -1,6 +1,5 @@
 package com.freelanceplatform.Service.Implementation;
 
-import com.freelanceplatform.DAL.Custom.UserDAL;
 import com.freelanceplatform.DAL.Repository.UserRepository;
 import com.freelanceplatform.DTO.UserLoginDTO;
 import com.freelanceplatform.DTO.UserRegisterDTO;
@@ -17,7 +16,7 @@ import java.util.Optional;
 public class UserServiceImpl implements IUserService {
 
     private final UserRepository userRepository;
-    private final PasswordService passwordService;
+    private final PasswordServiceImpl passwordServiceImpl;
 
     @Override
     public User getUserById(Long id) {
@@ -34,7 +33,7 @@ public class UserServiceImpl implements IUserService {
         User users = User.builder()
                 .name(userRegisterDTO.getName())
                 .email(userRegisterDTO.getEmail())
-                .password(passwordService.hashPassword(userRegisterDTO.getPassword()))
+                .password(passwordServiceImpl.hashPassword(userRegisterDTO.getPassword()))
                 .build();
         return userRepository.save(users);
     }
@@ -47,7 +46,7 @@ public class UserServiceImpl implements IUserService {
             users.setName(userUpdateDTO.getName());
             users.setEmail(userUpdateDTO.getEmail());
             if (userUpdateDTO.getPassword() != null && !userUpdateDTO.getPassword().isEmpty()) {
-                users.setPassword(passwordService.hashPassword(userUpdateDTO.getPassword()));
+                users.setPassword(passwordServiceImpl.hashPassword(userUpdateDTO.getPassword()));
             }
             return userRepository.save(users);
         }
@@ -66,6 +65,6 @@ public class UserServiceImpl implements IUserService {
     @Override
     public boolean authenticate(UserLoginDTO userLoginDTO) {
         User users = userRepository.findByEmail(userLoginDTO.getEmail());
-        return users != null && passwordService.checkPassword(userLoginDTO.getPassword(), users.getPassword());
+        return users != null && passwordServiceImpl.checkPassword(userLoginDTO.getPassword(), users.getPassword());
     }
 }

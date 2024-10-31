@@ -1,11 +1,15 @@
 package com.freelanceplatform.DTO;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class EditJobDTO {
     private Long id;
 
