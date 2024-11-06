@@ -1,6 +1,5 @@
 package com.freelanceplatform.controller;
 
-import com.freelanceplatform.Service.Implementation.UserServiceImpl;
 import com.freelanceplatform.DTO.UserLoginDTO;
 import com.freelanceplatform.Service.Interface.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package com.freelanceplatform.controller;
 
 import com.freelanceplatform.DTO.EditJobDTO;
-import com.freelanceplatform.Service.Implementation.JobServiceImpl;
+import com.freelanceplatform.Service.Implementation.JobService;
 import com.freelanceplatform.DTO.CreateJobDTO;
 import com.freelanceplatform.DAL.Entity.Job;
 import org.springframework.http.ResponseEntity;
@@ -12,9 +12,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/jobs")
 public class JobController {
-    private final JobServiceImpl jobService;
+    private final JobService jobService;
 
-    public JobController(JobServiceImpl jobService) {
+    public JobController(JobService jobService) {
         this.jobService = jobService;
     }
 

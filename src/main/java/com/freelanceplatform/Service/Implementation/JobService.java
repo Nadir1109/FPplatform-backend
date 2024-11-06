@@ -5,17 +5,32 @@ import com.freelanceplatform.DTO.EditJobDTO;
 import com.freelanceplatform.DAL.Entity.Job;
 import com.freelanceplatform.DAL.Interface.IJobDAL;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 import java.util.List;
 
+@SuppressWarnings("ALL")
 @Service
-public class JobServiceImpl {
+public class JobService {
     private final IJobDAL jobDAL;
 
-    public JobServiceImpl(IJobDAL jobDAL) {
+    public JobService(IJobDAL jobDAL) {
         this.jobDAL = jobDAL;
     }
 
     public Job createJob(CreateJobDTO createJobDTO) {
+
+        if (createJobDTO.getTitle() == null || createJobDTO.getTitle().isEmpty()) {
+            throw new IllegalArgumentException("Title is required");
+        }
+
+        if (createJobDTO.getBudget() <= 0) {
+            throw new IllegalArgumentException("Budget must be positive");
+        }
+        if (createJobDTO.getDeadline().isBefore(LocalDate.now())) {
+            throw new IllegalArgumentException("Deadline must be a future date");
+        }
+
         Job job = new Job();
         job.setTitle(createJobDTO.getTitle());
         job.setBudget(createJobDTO.getBudget());

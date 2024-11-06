@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class JobDALImpl implements IJobDAL {
+public class JobDAL implements IJobDAL {
     private final JobRepository jobRepository;
 
-    public JobDALImpl(JobRepository jobRepository) {
+    public JobDAL(JobRepository jobRepository) {
         this.jobRepository = jobRepository;
     }
 
