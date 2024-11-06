@@ -2,6 +2,7 @@ package com.freelanceplatform.controller;
 
 import com.freelanceplatform.DAL.Entity.User;
 import com.freelanceplatform.DTO.CreateUserDTO;
+import com.freelanceplatform.DTO.UserLoginDTO;
 import com.freelanceplatform.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,16 @@ public class AuthController {
         } catch (IllegalArgumentException e) {
             // Als er bijvoorbeeld al een gebruiker met dit e-mailadres is
             return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<User> loginUser(@RequestBody UserLoginDTO userLoginDTO) {
+        try {
+            User loggedInUser = userService.loginUser(userLoginDTO);
+            return ResponseEntity.ok(loggedInUser);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(401).body(null); // Unauthorized status
         }
     }
 }

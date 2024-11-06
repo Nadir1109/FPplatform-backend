@@ -3,6 +3,7 @@ package com.freelanceplatform.Service;
 import com.freelanceplatform.DAL.Entity.User;
 import com.freelanceplatform.DAL.Interface.IUserDAL;
 import com.freelanceplatform.DTO.CreateUserDTO;
+import com.freelanceplatform.DTO.UserLoginDTO;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -31,31 +32,14 @@ public class UserService {
 
         return userDAL.save(user);
     }
-    public Optional<User> getUserById(Long id) {
-        return userDAL.findById(id);
-    }
+    public User loginUser(UserLoginDTO userLoginDTO) {
+        User user = userDAL.findByEmail(userLoginDTO.getEmail())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid email or password"));
 
-    public Optional<User> getUserByEmail(String email) {
-        return userDAL.findByEmail(email);
-    }
-
-    public User updateUser(Long id, CreateUserDTO updatedUser) {
-        if (userDAL.existsById(id)) {
-            User user = userDAL.findById(id).get();
-            user.setName(updatedUser.getName());
-            user.setEmail(updatedUser.getEmail());
-            user.setPassword(passwordEncoder.encode(updatedUser.getPassword())); // Update wachtwoord
-            user.setRole(updatedUser.getRole());
-            return userDAL.save(user);
+        if (!passwordEncoder.matches(userLoginDTO.getPassword(), user.getPassword())) {
+            throw new IllegalArgumentException("Invalid email or password");
         }
-        throw new IllegalArgumentException("User not found");
-    }
 
-    public void deleteUser(Long id) {
-        if (userDAL.existsById(id)) {
-            userDAL.deleteById(id);
-        } else {
-            throw new IllegalArgumentException("User not found");
-        }
+        return user;
     }
-}
+    }
