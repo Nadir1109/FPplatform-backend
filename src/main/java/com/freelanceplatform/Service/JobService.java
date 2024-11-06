@@ -1,4 +1,4 @@
-package com.freelanceplatform.Service.Implementation;
+package com.freelanceplatform.Service;
 
 import com.freelanceplatform.DTO.CreateJobDTO;
 import com.freelanceplatform.DTO.EditJobDTO;

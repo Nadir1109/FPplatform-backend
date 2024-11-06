@@ -3,7 +3,7 @@ package com.freelanceplatform.service;
 import com.freelanceplatform.DAL.Entity.Job;
 import com.freelanceplatform.DAL.MockJobDAL;
 import com.freelanceplatform.DTO.CreateJobDTO;
-import com.freelanceplatform.Service.Implementation.JobService;
+import com.freelanceplatform.Service.JobService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

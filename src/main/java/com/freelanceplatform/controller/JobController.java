@@ -1,7 +1,7 @@
 package com.freelanceplatform.controller;
 
 import com.freelanceplatform.DTO.EditJobDTO;
-import com.freelanceplatform.Service.Implementation.JobService;
+import com.freelanceplatform.Service.JobService;
 import com.freelanceplatform.DTO.CreateJobDTO;
 import com.freelanceplatform.DAL.Entity.Job;
 import org.springframework.http.ResponseEntity;
