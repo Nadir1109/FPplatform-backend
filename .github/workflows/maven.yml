@@ -33,5 +33,5 @@ jobs:
     # SonarCloud Analysis
     - name: SonarCloud Scan
       env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # Zorg ervoor dat je een SONAR_TOKEN secret hebt aangemaakt in je GitHub repository
-      run: mvn sonar:sonar -Dsonar.projectKey=Nadir1109_FPplatform-backend -Dsonar.organization=nadir-org -Dsonar.host.url=https://sonarcloud.io
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
+      run: mvn sonar:sonar -Dsonar.projectKey=Nadir1109_FPplatform-backend -Dsonar.organization=nadir1109 -Dsonar.host.url=https://sonarcloud.io
