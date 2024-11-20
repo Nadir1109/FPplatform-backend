@@ -1,8 +1,10 @@
 package com.freelanceplatform.service;
 
 import com.freelanceplatform.DAL.Entity.Job;
+import com.freelanceplatform.DAL.Entity.User;
 import com.freelanceplatform.DAL.MockJobDAL;
 import com.freelanceplatform.DTO.CreateJobDTO;
+import com.freelanceplatform.DTO.UserRole;
 import com.freelanceplatform.Service.JobService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,15 +13,20 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SuppressWarnings("ALL")
 public class JobServiceTest {
 
     private JobService jobService;
     private MockJobDAL jobDAL;
+    private User owner;
+
 
     @BeforeEach
     public void setUp() {
         jobDAL = new MockJobDAL();
+
         jobService = new JobService(jobDAL);
+        owner = new User(1L, "Test Owner", "owner@example.com", "password", UserRole.CLIENT); // Mock User instance
     }
 
     @Test
@@ -32,13 +39,14 @@ public class JobServiceTest {
         createJobDTO.setDescription("A standard job description");
 
         // Act
-        Job createdJob = jobService.createJob(createJobDTO);
+        Job createdJob = jobService.createJob(createJobDTO, owner);
 
         // Assert
         assertNotNull(createdJob, "Job should not be null");
-        assertEquals("Happy Job", createdJob.getTitle(), "Job title should be 'Happy Job'");
+        assertEquals("Happy Job", createdJob.getTitle());
         assertEquals(1000, createdJob.getBudget(), "Job budget should be 1000");
         assertEquals("A standard job description", createdJob.getDescription(), "Job description should match");
+        assertEquals(owner, createdJob.getOwner(), "Job owner should match the provided user");
 
         Job savedJob = jobDAL.getSavedJob();
         assertNotNull(savedJob, "Saved job should not be null");
@@ -55,7 +63,7 @@ public class JobServiceTest {
         createJobDTO.setDescription("Missing title");
 
         // Act & Assert
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> jobService.createJob(createJobDTO));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> jobService.createJob(createJobDTO, owner));
         assertEquals("Title is required", exception.getMessage(), "Expected error for missing title");
     }
 
@@ -69,7 +77,7 @@ public class JobServiceTest {
         createJobDTO.setDescription("Negative budget");
 
         // Act & Assert
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> jobService.createJob(createJobDTO));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> jobService.createJob(createJobDTO, owner));
         assertEquals("Budget must be positive", exception.getMessage(), "Expected error for negative budget");
     }
 
@@ -83,11 +91,12 @@ public class JobServiceTest {
         createJobDTO.setDescription("Edge case with maximum budget");
 
         // Act
-        Job createdJob = jobService.createJob(createJobDTO);
+        Job createdJob = jobService.createJob(createJobDTO, owner);
 
         // Assert
         assertNotNull(createdJob, "Job should not be null");
         assertEquals(Integer.MAX_VALUE, createdJob.getBudget(), "Job budget should be maximum integer value");
+        assertEquals(owner, createdJob.getOwner(), "Job owner should match the provided user");
     }
 
     @Test
@@ -100,7 +109,7 @@ public class JobServiceTest {
         createJobDTO.setDescription("Edge case with a past deadline");
 
         // Act & Assert
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> jobService.createJob(createJobDTO));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> jobService.createJob(createJobDTO, owner));
         assertEquals("Deadline must be a future date", exception.getMessage(), "Expected error for past deadline");
     }
 }
