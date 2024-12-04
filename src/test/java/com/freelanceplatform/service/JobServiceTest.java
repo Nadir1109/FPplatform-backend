@@ -39,14 +39,13 @@ public class JobServiceTest {
         createJobDTO.setDescription("A standard job description");
 
         // Act
-        Job createdJob = jobService.createJob(createJobDTO, owner);
+        Job createdJob = jobService.createJob(createJobDTO);
 
         // Assert
         assertNotNull(createdJob, "Job should not be null");
         assertEquals("Happy Job", createdJob.getTitle());
         assertEquals(1000, createdJob.getBudget(), "Job budget should be 1000");
         assertEquals("A standard job description", createdJob.getDescription(), "Job description should match");
-        assertEquals(owner, createdJob.getOwner(), "Job owner should match the provided user");
 
         Job savedJob = jobDAL.getSavedJob();
         assertNotNull(savedJob, "Saved job should not be null");
@@ -63,7 +62,7 @@ public class JobServiceTest {
         createJobDTO.setDescription("Missing title");
 
         // Act & Assert
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> jobService.createJob(createJobDTO, owner));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> jobService.createJob(createJobDTO ));
         assertEquals("Title is required", exception.getMessage(), "Expected error for missing title");
     }
 
@@ -77,7 +76,7 @@ public class JobServiceTest {
         createJobDTO.setDescription("Negative budget");
 
         // Act & Assert
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> jobService.createJob(createJobDTO, owner));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> jobService.createJob(createJobDTO));
         assertEquals("Budget must be positive", exception.getMessage(), "Expected error for negative budget");
     }
 
@@ -91,12 +90,11 @@ public class JobServiceTest {
         createJobDTO.setDescription("Edge case with maximum budget");
 
         // Act
-        Job createdJob = jobService.createJob(createJobDTO, owner);
+        Job createdJob = jobService.createJob(createJobDTO);
 
         // Assert
         assertNotNull(createdJob, "Job should not be null");
         assertEquals(Integer.MAX_VALUE, createdJob.getBudget(), "Job budget should be maximum integer value");
-        assertEquals(owner, createdJob.getOwner(), "Job owner should match the provided user");
     }
 
     @Test
@@ -109,7 +107,7 @@ public class JobServiceTest {
         createJobDTO.setDescription("Edge case with a past deadline");
 
         // Act & Assert
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> jobService.createJob(createJobDTO, owner));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> jobService.createJob(createJobDTO));
         assertEquals("Deadline must be a future date", exception.getMessage(), "Expected error for past deadline");
     }
 }

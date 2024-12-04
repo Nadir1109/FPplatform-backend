@@ -1,15 +1,12 @@
 package com.freelanceplatform.controller;
 
-import com.freelanceplatform.DAL.Entity.User;
-import com.freelanceplatform.DTO.EditJobDTO;
-import com.freelanceplatform.Service.JobService;
 import com.freelanceplatform.DTO.CreateJobDTO;
+import com.freelanceplatform.DTO.EditJobDTO;
 import com.freelanceplatform.DAL.Entity.Job;
+import com.freelanceplatform.Service.JobService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import java.nio.file.AccessDeniedException;
 import java.util.List;
 
 @RestController
@@ -21,10 +18,10 @@ public class JobController {
         this.jobService = jobService;
     }
 
-    @PostMapping("/jobs")
-    public ResponseEntity<Job> createJob(@RequestBody CreateJobDTO createJobDTO, @AuthenticationPrincipal User currentUser) {
-        Job createdJob = jobService.createJob(createJobDTO, currentUser);
-        return ResponseEntity.ok(createdJob);
+    @PostMapping
+    public ResponseEntity<Job> createJob(@RequestBody CreateJobDTO createJobDTO) {
+        Job createdJob = jobService.createJob(createJobDTO);
+        return ResponseEntity.status(201).body(createdJob);
     }
 
     @GetMapping
@@ -39,14 +36,15 @@ public class JobController {
         return ResponseEntity.ok(job);
     }
 
-    @PutMapping("/jobs/{id}")
-    public ResponseEntity<Job> updateJob(@PathVariable Long id, @RequestBody EditJobDTO editJobDTO, @AuthenticationPrincipal User currentUser) throws AccessDeniedException {
-        Job updatedJob = jobService.updateJob(id, editJobDTO, currentUser);
+    @PutMapping("/{id}")
+    public ResponseEntity<Job> updateJob(@PathVariable Long id, @RequestBody EditJobDTO editJobDTO) {
+        Job updatedJob = jobService.updateJob(id, editJobDTO);
         return ResponseEntity.ok(updatedJob);
     }
-    @DeleteMapping("/jobs/{id}")
-    public ResponseEntity<Void> deleteJob(@PathVariable Long id, @AuthenticationPrincipal User currentUser) throws AccessDeniedException {
-        jobService.deleteJob(id, currentUser);
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteJob(@PathVariable Long id) {
+        jobService.deleteJob(id);
         return ResponseEntity.noContent().build();
     }
 }

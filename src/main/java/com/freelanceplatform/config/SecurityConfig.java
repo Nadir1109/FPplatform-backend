@@ -36,10 +36,10 @@ public class SecurityConfig {
                                 "/api/auth/login",
                                 "/api/auth/register",
                                 "/h2-console/**",
-                                "/v3/api-docs/**", // Swagger JSON docs
-                                "/swagger-ui/**",  // Swagger UI resources
-                                "/swagger-ui.html" // Swagger UI HTML pagina
-                        ).permitAll() // Maak Swagger openbaar
+                                "/v3/api-docs/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html"
+                        ).permitAll()
                         .anyRequest().authenticated() // Vereist authenticatie voor alle andere endpoints
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
@@ -53,7 +53,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(List.of("http://localhost:5173")); // Specifieke origin
+        corsConfiguration.setAllowedOrigins(List.of("http://localhost:5173","http://localhost:5174")); // Specifieke origin
         corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Specifieke HTTP-methoden
         corsConfiguration.setAllowedHeaders(List.of("Authorization", "Content-Type")); // Specifieke headers
         corsConfiguration.setAllowCredentials(true); // Credentials toestaan (belangrijk voor cookies/tokens)

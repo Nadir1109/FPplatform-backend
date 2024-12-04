@@ -1,30 +1,21 @@
 package com.freelanceplatform.DAL.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-
-@Entity
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Entity
 public class Job {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String title;
     private String description;
-    private int budget;
+    private Integer budget;
     private LocalDateTime deadline;
-    @ManyToOne
-    @JoinColumn(name = "owner_id, nullable = false")
-    private User owner;
-
 }

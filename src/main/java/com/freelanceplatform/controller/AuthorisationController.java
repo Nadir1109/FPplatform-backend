@@ -15,17 +15,15 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
-public class AuthController {
+public class AuthorisationController {
 
     private final UserService userService;
     private final JwtTokenProvider jwtTokenProvider;
 
-    @Autowired
-    public AuthController(UserService userService, JwtTokenProvider jwtTokenProvider) {
+    public AuthorisationController(UserService userService, JwtTokenProvider jwtTokenProvider) {
         this.userService = userService;
         this.jwtTokenProvider = jwtTokenProvider;
     }
-
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody CreateUserDTO createUserDTO) {
         try {
@@ -35,16 +33,14 @@ public class AuthController {
             return ResponseEntity.badRequest().body(null);
         }
     }
-
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> loginUser(@RequestBody UserLoginDTO userLoginDTO) {
         try {
             User loggedInUser = userService.loginUser(userLoginDTO);
 
-            // Genereer JWT-token
             String token = jwtTokenProvider.createToken(loggedInUser.getEmail(), loggedInUser.getRole().name());
 
-            // Stel de response samen
+
             Map<String, String> response = new HashMap<>();
             response.put("token", token);
             response.put("email", loggedInUser.getEmail());
@@ -55,7 +51,6 @@ public class AuthController {
             return ResponseEntity.status(401).body(Map.of("error", "Login failed: " + e.getMessage()));
         }
     }
-
     @GetMapping("/me")
     public ResponseEntity<Map<String, String>> getCurrentUser() {
         return userService.getAuthenticatedUser()
@@ -68,7 +63,6 @@ public class AuthController {
                 })
                 .orElse(ResponseEntity.status(401).body(Map.of("error", "Not logged in")));
     }
-
     @PostMapping("/logout")
     public ResponseEntity<String> logout() {
         SecurityContextHolder.clearContext();
