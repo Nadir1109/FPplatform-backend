@@ -4,6 +4,7 @@ import com.freelanceplatform.DAL.Entity.User;
 import com.freelanceplatform.DTO.CreateJobDTO;
 import com.freelanceplatform.DTO.EditJobDTO;
 import com.freelanceplatform.DAL.Entity.Job;
+import com.freelanceplatform.DTO.JobDTO;
 import com.freelanceplatform.DTO.UserRole;
 import com.freelanceplatform.Service.JobService;
 import com.freelanceplatform.Service.UserService;
@@ -44,10 +45,11 @@ public class JobController {
 
 
     @GetMapping
-    public ResponseEntity<List<Job>> getAllJobs() {
-        List<Job> jobs = jobService.getAllJobs();
+    public ResponseEntity<List<JobDTO>> getAllJobs() {
+        List<JobDTO> jobs = jobService.getAllJobs();
         return ResponseEntity.ok(jobs);
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Job> getJobById(@PathVariable Long id) {
@@ -56,10 +58,26 @@ public class JobController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Job> updateJob(@PathVariable Long id, @RequestBody EditJobDTO editJobDTO) {
-        Job updatedJob = jobService.updateJob(id, editJobDTO);
-        return ResponseEntity.ok(updatedJob);
+    public ResponseEntity<Job> updateJob(
+            @PathVariable Long id,
+            @RequestBody EditJobDTO editJobDTO,
+            Authentication authentication) {
+
+        // Haal de ingelogde gebruiker op
+        String username = authentication.getName();
+        User user = userService.findByEmail(username)
+                .orElseThrow(() -> new IllegalArgumentException("Gebruiker niet gevonden"));
+
+        // Roep de service aan om de job te updaten
+        try {
+            Job updatedJob = jobService.updateJob(id, editJobDTO, user);
+            return ResponseEntity.ok(updatedJob);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
     }
+
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteJob(@PathVariable Long id) {
