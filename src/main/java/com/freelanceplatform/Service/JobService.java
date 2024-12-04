@@ -1,6 +1,7 @@
 package com.freelanceplatform.Service;
 
 import com.freelanceplatform.DAL.Entity.Job;
+import com.freelanceplatform.DAL.Entity.User;
 import com.freelanceplatform.DAL.Interface.IJobDAL;
 import com.freelanceplatform.DTO.CreateJobDTO;
 import com.freelanceplatform.DTO.EditJobDTO;
@@ -19,7 +20,7 @@ public class JobService {
         this.jobDAL = jobDAL;
     }
 
-    public Job createJob(CreateJobDTO createJob) {
+    public Job createJob(CreateJobDTO createJob, User user) {
         validateJobData(createJob);
 
         Job job = new Job();
@@ -27,6 +28,7 @@ public class JobService {
         job.setBudget(createJob.getBudget());
         job.setDeadline(createJob.getDeadline().atStartOfDay());
         job.setDescription(createJob.getDescription());
+        job.setUser(user);
 
         return jobDAL.save(job);
     }

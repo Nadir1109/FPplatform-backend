@@ -61,7 +61,9 @@ public class UserService {
 
         return user;
     }
-
+    public Optional<User> findByEmail(String email) {
+        return userDAL.findByEmail(email);
+    }
     public Optional<User> getAuthenticatedUser() {
         var authentication = SecurityContextHolder.getContext().getAuthentication();
 
