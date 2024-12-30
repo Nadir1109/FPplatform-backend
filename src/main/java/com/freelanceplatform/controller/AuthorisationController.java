@@ -1,17 +1,13 @@
 package com.freelanceplatform.controller;
 
 import com.freelanceplatform.DAL.Entity.User;
-import com.freelanceplatform.DTO.CreateUserDTO;
-import com.freelanceplatform.DTO.UserLoginDTO;
+import com.freelanceplatform.DTO.*;
 import com.freelanceplatform.Service.UserService;
 import com.freelanceplatform.config.JwtTokenProvider;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -24,48 +20,38 @@ public class AuthorisationController {
         this.userService = userService;
         this.jwtTokenProvider = jwtTokenProvider;
     }
+
     @PostMapping("/register")
-    public ResponseEntity<User> registerUser(@RequestBody CreateUserDTO createUserDTO) {
+    public ResponseEntity<UserDTO> registerUser(@Valid @RequestBody CreateUserDTO createUserDTO) {
+        if (createUserDTO.getRole() != UserRole.CLIENT && createUserDTO.getRole() != UserRole.FREELANCER) {
+            return ResponseEntity.badRequest().body(null);
+        }
+
         try {
-            User registeredUser = userService.registerUser(createUserDTO);
-            return ResponseEntity.ok(registeredUser);
+
+            UserDTO registeredUser = userService.registerUser(createUserDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body(registeredUser);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(null);
         }
     }
+
     @PostMapping("/login")
-    public ResponseEntity<Map<String, String>> loginUser(@RequestBody UserLoginDTO userLoginDTO) {
+    public ResponseEntity<LoginResponseDTO> loginUser(@RequestBody UserLoginDTO userLoginDTO) {
         try {
-            User loggedInUser = userService.loginUser(userLoginDTO);
+            // Haal de gebruiker op als UserDTO
+            UserDTO loggedInUser = userService.loginUser(userLoginDTO);
 
-            String token = jwtTokenProvider.createToken(loggedInUser.getEmail(), loggedInUser.getRole().name());
+            // Genereer een token op basis van de UserDTO
+            String token = jwtTokenProvider.createToken(loggedInUser.getEmail(), loggedInUser.getRole());
 
-
-            Map<String, String> response = new HashMap<>();
-            response.put("token", token);
-            response.put("email", loggedInUser.getEmail());
-            response.put("role", loggedInUser.getRole().name());
+            // Stel een LoginResponseDTO samen
+            LoginResponseDTO response = new LoginResponseDTO(token, loggedInUser.getEmail(), loggedInUser.getRole());
 
             return ResponseEntity.ok(response);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(401).body(Map.of("error", "Login failed: " + e.getMessage()));
+            return ResponseEntity.status(401).body(null);
         }
     }
-    @GetMapping("/me")
-    public ResponseEntity<Map<String, String>> getCurrentUser() {
-        return userService.getAuthenticatedUser()
-                .map(user -> {
-                    Map<String, String> userInfo = new HashMap<>();
-                    userInfo.put("name", user.getName());
-                    userInfo.put("email", user.getEmail());
-                    userInfo.put("role", String.valueOf(user.getRole()));
-                    return ResponseEntity.ok(userInfo);
-                })
-                .orElse(ResponseEntity.status(401).body(Map.of("error", "Not logged in")));
-    }
-    @PostMapping("/logout")
-    public ResponseEntity<String> logout() {
-        SecurityContextHolder.clearContext();
-        return ResponseEntity.ok("Logged out");
-    }
+
 }

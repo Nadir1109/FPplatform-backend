@@ -14,19 +14,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CreateUserDTO {
 
-    @NotNull
-    @NotEmpty
+    @NotNull(message = "Name is required")
+    @NotEmpty(message = "Name cannot be empty")
     private String name;
 
-    @NotNull
-    @NotEmpty
+    @NotNull(message = "Email is required")
+    @Email(message = "Email must be valid")
     @Email
     private String email;
 
-    @NotNull
-    @NotEmpty
+    @NotNull(message = "Password is required")
+    @NotEmpty(message = "Password cannot be empty")
     private String password;
 
-    @NotNull
+    @NotNull(message = "Role is required")
     private UserRole role; // Rol van de gebruiker: CLIENT of FREELANCER
 }

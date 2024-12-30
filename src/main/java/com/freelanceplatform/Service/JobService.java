@@ -3,9 +3,12 @@ package com.freelanceplatform.Service;
 import com.freelanceplatform.DAL.Entity.Job;
 import com.freelanceplatform.DAL.Entity.User;
 import com.freelanceplatform.DAL.Interface.IJobDAL;
+import com.freelanceplatform.DAL.Mapper.JobMapper;
+import com.freelanceplatform.DAL.Mapper.UserMapper;
 import com.freelanceplatform.DTO.CreateJobDTO;
 import com.freelanceplatform.DTO.EditJobDTO;
 import com.freelanceplatform.DTO.JobDTO;
+import com.freelanceplatform.DTO.UserDTO;
 import com.freelanceplatform.exceptions.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -17,67 +20,57 @@ import java.util.stream.Collectors;
 public class JobService {
 
     private final IJobDAL jobDAL;
+    private final JobMapper jobMapper;
+    private final UserMapper userMapper;
 
-    public JobService(IJobDAL jobDAL) {
+    public JobService(IJobDAL jobDAL, JobMapper jobMapper, UserMapper userMapper) {
         this.jobDAL = jobDAL;
+        this.jobMapper = jobMapper;
+        this.userMapper = userMapper;
     }
 
-    public Job createJob(CreateJobDTO createJob, User user) {
-        validateJobData(createJob);
+    public JobDTO createJob(CreateJobDTO createJobDTO, UserDTO userDTO) {
+        validateJobData(createJobDTO);
 
-        Job job = new Job();
-        job.setTitle(createJob.getTitle());
-        job.setBudget(createJob.getBudget());
-        job.setDeadline(createJob.getDeadline().atStartOfDay());
-        job.setDescription(createJob.getDescription());
+        User user = userMapper.toEntity(userDTO);
+        Job job = jobMapper.toEntity(createJobDTO);
         job.setUser(user);
 
-        return jobDAL.save(job);
+        Job savedJob = jobDAL.save(job);
+        return jobMapper.toDTO(savedJob);
     }
 
     public List<JobDTO> getAllJobs() {
-        List<Job> jobs = jobDAL.findAll(); // Haal alle jobs op
-
-        return jobs.stream().map(job -> {
-            JobDTO jobDTO = new JobDTO();
-            jobDTO.setId(job.getId());
-            jobDTO.setTitle(job.getTitle());
-            jobDTO.setDescription(job.getDescription());
-            jobDTO.setBudget(job.getBudget());
-            jobDTO.setDeadline(job.getDeadline().toLocalDate());
-            jobDTO.setUserName(job.getUser().getName()); // Naam van de eigenaar
-            jobDTO.setUserEmail(job.getUser().getEmail()); // Email van de eigenaar
-            return jobDTO;
-        }).collect(Collectors.toList());
+        return jobDAL.findAll().stream()
+                .map(jobMapper::toDTO)
+                .collect(Collectors.toList());
     }
 
-    public Job getJobById(Long id) {
-        return jobDAL.findById(id)
+    public JobDTO getJobById(Long id) {
+        Job job = jobDAL.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Job not found with id: " + id));
+        return jobMapper.toDTO(job);
     }
 
-    public Job updateJob(Long jobId, EditJobDTO editJobDTO, User currentUser) {
+    public JobDTO updateJob(Long jobId, EditJobDTO editJobDTO, UserDTO currentUserDTO) {
         Job job = jobDAL.findById(jobId)
                 .orElseThrow(() -> new IllegalArgumentException("Job niet gevonden"));
 
-        // Controleer of de huidige gebruiker de eigenaar van de job is
+        User currentUser = userMapper.toEntity(currentUserDTO);
+
         if (!job.getUser().getId().equals(currentUser.getId())) {
             throw new IllegalArgumentException("Je mag alleen je eigen jobs bewerken.");
         }
 
-        // Update de job
-        job.setTitle(editJobDTO.getTitle());
-        job.setDescription(editJobDTO.getDescription());
-        job.setBudget(editJobDTO.getBudget());
-        job.setDeadline(editJobDTO.getDeadline().atStartOfDay());
-
-        return jobDAL.save(job);
+        jobMapper.updateEntityFromDTO(editJobDTO, job);
+        Job updatedJob = jobDAL.save(job);
+        return jobMapper.toDTO(updatedJob);
     }
 
-
-
     public void deleteJob(Long jobId) {
-        Job job = getJobById(jobId);
+        if (!jobDAL.existsById(jobId)) {
+            throw new IllegalArgumentException("Job not found.");
+        }
         jobDAL.deleteById(jobId);
     }
 
