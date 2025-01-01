@@ -38,7 +38,9 @@ public class SecurityConfig {
                                 "/h2-console/**",
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
-                                "/swagger-ui.html"
+                                "/swagger-ui.html",
+                                "/api/jobs/**",
+                                "/"
                         ).permitAll()
                         .anyRequest().authenticated() // Vereist authenticatie voor alle andere endpoints
                 )
@@ -48,12 +50,10 @@ public class SecurityConfig {
         return http.build();
     }
 
-
-
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(List.of("http://localhost:5173","http://localhost:5174")); // Specifieke origin
+        corsConfiguration.setAllowedOrigins(List.of("http://localhost:5173","http://localhost:5174","http://localhost:8000")); // Specifieke origin
         corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Specifieke HTTP-methoden
         corsConfiguration.setAllowedHeaders(List.of("Authorization", "Content-Type")); // Specifieke headers
         corsConfiguration.setAllowCredentials(true); // Credentials toestaan (belangrijk voor cookies/tokens)
@@ -61,7 +61,6 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", corsConfiguration);
         return source;
     }
-
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
