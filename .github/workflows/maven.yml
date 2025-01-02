@@ -39,6 +39,8 @@ jobs:
     # Build dockerfile
     - name: build dockerfile
       run: docker build -t ${{ secrets.DOCKER_USERNAME }}/freelance-back-end:latest .
+
+    # Push to docker-hub
     - name: login into docker-hub
       uses: docker/login-action@v1
       with:
