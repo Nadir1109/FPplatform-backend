@@ -18,8 +18,11 @@ com\freelanceplatform\exceptions\EmailNotFoundException.class
 com\freelanceplatform\config\SwaggerConfig.class
 com\freelanceplatform\controller\UserController.class
 com\freelanceplatform\DTO\CreateUserDTO.class
+com\freelanceplatform\Service\JobEventListener.class
 com\freelanceplatform\DAL\Entity\Job.class
 com\freelanceplatform\FreelancePlatformApplication.class
+com\freelanceplatform\DTO\JobCreatedEvent.class
+com\freelanceplatform\Service\JobEventPublisher.class
 com\freelanceplatform\DAL\Mapper\JobMapper.class
 com\freelanceplatform\DAL\Mapper\JobMapperImpl.class
 com\freelanceplatform\controller\JobController.class

@@ -19,6 +19,8 @@ C:\Users\Nadir\IdeaProjects\testing\src\main\java\com\freelanceplatform\config\J
 C:\Users\Nadir\IdeaProjects\testing\src\main\java\com\freelanceplatform\DTO\UserLoginDTO.java
 C:\Users\Nadir\IdeaProjects\testing\src\main\java\com\freelanceplatform\exceptions\ValidationExceptionHandler.java
 C:\Users\Nadir\IdeaProjects\testing\src\main\java\com\freelanceplatform\DAL\Entity\Job.java
+C:\Users\Nadir\IdeaProjects\testing\src\main\java\com\freelanceplatform\Service\JobEventPublisher.java
+C:\Users\Nadir\IdeaProjects\testing\src\main\java\com\freelanceplatform\DTO\JobCreatedEvent.java
 C:\Users\Nadir\IdeaProjects\testing\src\main\java\com\freelanceplatform\FreelancePlatformApplication.java
 C:\Users\Nadir\IdeaProjects\testing\src\main\java\com\freelanceplatform\DAL\Interface\IUserDAL.java
 C:\Users\Nadir\IdeaProjects\testing\src\main\java\com\freelanceplatform\controller\UserController.java
@@ -26,6 +28,7 @@ C:\Users\Nadir\IdeaProjects\testing\src\main\java\com\freelanceplatform\DAL\Repo
 C:\Users\Nadir\IdeaProjects\testing\src\main\java\com\freelanceplatform\DTO\LoginResponseDTO.java
 C:\Users\Nadir\IdeaProjects\testing\src\main\java\com\freelanceplatform\DAL\Entity\User.java
 C:\Users\Nadir\IdeaProjects\testing\src\main\java\com\freelanceplatform\DTO\EditJobDTO.java
+C:\Users\Nadir\IdeaProjects\testing\src\main\java\com\freelanceplatform\Service\JobEventListener.java
 C:\Users\Nadir\IdeaProjects\testing\src\main\java\com\freelanceplatform\DTO\UserRole.java
 C:\Users\Nadir\IdeaProjects\testing\src\main\java\com\freelanceplatform\config\SecurityConfig.java
 C:\Users\Nadir\IdeaProjects\testing\src\main\java\com\freelanceplatform\controller\AuthorisationController.java
