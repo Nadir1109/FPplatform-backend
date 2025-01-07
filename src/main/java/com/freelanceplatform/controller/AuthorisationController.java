@@ -4,6 +4,9 @@ import com.freelanceplatform.DAL.Entity.User;
 import com.freelanceplatform.DTO.*;
 import com.freelanceplatform.Service.UserService;
 import com.freelanceplatform.config.JwtTokenProvider;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +24,11 @@ public class AuthorisationController {
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
+    @Operation(summary = "Registreer een nieuwe gebruiker", description = "Deze endpoint voegt een nieuwe gebruiker toe aan het systeem.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Gebruiker succesvol geregistreerd"),
+            @ApiResponse(responseCode = "400", description = "Ongeldige invoer")
+    })
     @PostMapping("/register")
     public ResponseEntity<UserDTO> registerUser(@Valid @RequestBody CreateUserDTO createUserDTO) {
         if (createUserDTO.getRole() != UserRole.CLIENT && createUserDTO.getRole() != UserRole.FREELANCER) {

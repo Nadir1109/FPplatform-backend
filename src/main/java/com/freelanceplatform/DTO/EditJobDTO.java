@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class EditJobDTO {
     private Long id;
 
-    @NotBlank(message = "Titel mag niet leeg zijn.")
+    @NotBlank(message = "Titel mag niet leeg.")
     private String title;
 
     private Integer budget;
