@@ -1,3 +1,4 @@
+com\freelanceplatform\integration\JobEventListenerTest.class
 com\freelanceplatform\DAL\MockJobDAL.class
 com\freelanceplatform\service\JobServiceIntegrationTest.class
 com\freelanceplatform\integration\JobServiceKafkaTest.class

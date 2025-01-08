@@ -3,7 +3,9 @@ package com.freelanceplatform.DAL.Entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import java.time.LocalDateTime;
+
+import java.time.LocalDate;
+
 
 @Getter
 @Setter
@@ -16,7 +18,7 @@ public class Job {
     private String title;
     private String description;
     private Integer budget;
-    private LocalDateTime deadline;
+    private LocalDate deadline;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

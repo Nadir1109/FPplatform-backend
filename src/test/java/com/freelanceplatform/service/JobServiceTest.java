@@ -57,7 +57,7 @@ public class JobServiceTest {
         Job jobEntity = new Job();
         jobEntity.setTitle("Test Job");
         jobEntity.setBudget(1500);
-        jobEntity.setDeadline(LocalDate.now().plusDays(30).atStartOfDay());
+        jobEntity.setDeadline(LocalDate.from(LocalDate.now().plusDays(30).atStartOfDay()));
         jobEntity.setDescription("Test Description");
         jobEntity.setUser(userEntity);
 
@@ -65,7 +65,7 @@ public class JobServiceTest {
         savedJob.setId(1L);
         savedJob.setTitle("Test Job");
         savedJob.setDescription("Test Description");
-        savedJob.setDeadline(LocalDate.now().plusDays(30).atStartOfDay());
+        savedJob.setDeadline(LocalDate.from(LocalDate.now().plusDays(30).atStartOfDay()));
         savedJob.setBudget(1500);
         savedJob.setUser(userEntity);
 
