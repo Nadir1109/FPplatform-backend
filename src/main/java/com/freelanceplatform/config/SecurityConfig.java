@@ -40,7 +40,8 @@ public class SecurityConfig {
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
                                 "/api/jobs/**",
-                                "/"
+                                "/",
+                                "/ws/**"
                         ).permitAll()
                         .anyRequest().authenticated() // Vereist authenticatie voor alle andere endpoints
                 )

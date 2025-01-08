@@ -18,4 +18,5 @@ public class FreelancePlatformApplication {
     public String welcome() {
         return "Welkom op het Freelance Platform! Hier kunnen freelancers en opdrachtgevers elkaar vinden.";
     }
+
 }
